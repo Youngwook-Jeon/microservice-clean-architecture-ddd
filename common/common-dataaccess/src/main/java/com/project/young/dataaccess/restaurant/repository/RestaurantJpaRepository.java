@@ -1,7 +1,7 @@
-package com.project.young.order.service.dataaccess.restaurant.repository;
+package com.project.young.dataaccess.restaurant.repository;
 
-import com.project.young.order.service.dataaccess.restaurant.entity.RestaurantEntity;
-import com.project.young.order.service.dataaccess.restaurant.entity.RestaurantEntityId;
+import com.project.young.dataaccess.restaurant.entity.RestaurantEntity;
+import com.project.young.dataaccess.restaurant.entity.RestaurantEntityId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

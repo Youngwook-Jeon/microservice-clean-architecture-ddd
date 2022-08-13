@@ -1,4 +1,4 @@
-package com.project.young.order.service.dataaccess.restaurant.entity;
+package com.project.young.dataaccess.restaurant.entity;
 
 import lombok.*;
 
@@ -33,6 +33,8 @@ public class RestaurantEntity {
     private String productName;
 
     private BigDecimal productPrice;
+
+    private Boolean productAvailable;
 
     @Override
     public boolean equals(Object o) {

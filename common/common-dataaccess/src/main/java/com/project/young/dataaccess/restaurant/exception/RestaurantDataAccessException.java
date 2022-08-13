@@ -1,4 +1,4 @@
-package com.project.young.order.service.dataaccess.restaurant.exception;
+package com.project.young.dataaccess.restaurant.exception;
 
 public class RestaurantDataAccessException extends RuntimeException {
 

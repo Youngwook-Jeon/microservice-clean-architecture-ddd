@@ -1,10 +1,10 @@
-package com.project.young.order.service.dataaccess.restaurant.adapter;
+package com.project.young.restaurant.service.dataaccess.restaurant.adapter;
 
 import com.project.young.dataaccess.restaurant.entity.RestaurantEntity;
 import com.project.young.dataaccess.restaurant.repository.RestaurantJpaRepository;
-import com.project.young.order.service.dataaccess.restaurant.mapper.RestaurantDataAccessMapper;
-import com.project.young.order.service.domain.entity.Restaurant;
-import com.project.young.order.service.domain.ports.output.repository.RestaurantRepository;
+import com.project.young.restaurant.service.dataaccess.restaurant.mapper.RestaurantDataAccessMapper;
+import com.project.young.restaurant.service.domain.entity.Restaurant;
+import com.project.young.restaurant.service.domain.ports.output.repository.RestaurantRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,10 +28,8 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
         List<UUID> restaurantProducts =
                 restaurantDataAccessMapper.restaurantToRestaurantProducts(restaurant);
         Optional<List<RestaurantEntity>> restaurantEntities = restaurantJpaRepository
-                .findByRestaurantIdAndProductIdIn(
-                        restaurant.getId().getValue(),
-                        restaurantProducts
-                );
+                .findByRestaurantIdAndProductIdIn(restaurant.getId().getValue(),
+                        restaurantProducts);
         return restaurantEntities.map(restaurantDataAccessMapper::restaurantEntityToRestaurant);
     }
 }

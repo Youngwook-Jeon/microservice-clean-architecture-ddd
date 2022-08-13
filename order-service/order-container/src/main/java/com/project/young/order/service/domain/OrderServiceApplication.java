@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories(basePackages = "com.project.young.order.service.dataaccess")
-@EntityScan(basePackages = "com.project.young.order.service.dataaccess")
+@EnableJpaRepositories(basePackages = {"com.project.young.order.service.dataaccess", "com.project.young.dataaccess"})
+@EntityScan(basePackages = {"com.project.young.order.service.dataaccess", "com.project.young.dataaccess"})
 @SpringBootApplication(scanBasePackages = "com.project.young")
 public class OrderServiceApplication {
 

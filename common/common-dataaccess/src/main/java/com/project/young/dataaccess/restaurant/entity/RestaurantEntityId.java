@@ -1,4 +1,4 @@
-package com.project.young.order.service.dataaccess.restaurant.entity;
+package com.project.young.dataaccess.restaurant.entity;
 
 import lombok.*;
 
