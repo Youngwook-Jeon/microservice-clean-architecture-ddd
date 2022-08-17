@@ -1,5 +1,6 @@
 package com.project.young.order.service.dataaccess.order.adapter;
 
+import com.project.young.domain.valueobject.OrderId;
 import com.project.young.order.service.dataaccess.order.mapper.OrderDataAccessMapper;
 import com.project.young.order.service.dataaccess.order.repository.OrderJpaRepository;
 import com.project.young.order.service.domain.entity.Order;
@@ -19,6 +20,12 @@ public class OrderRepositoryImpl implements OrderRepository {
                                OrderDataAccessMapper orderDataAccessMapper) {
         this.orderJpaRepository = orderJpaRepository;
         this.orderDataAccessMapper = orderDataAccessMapper;
+    }
+
+    @Override
+    public Optional<Order> findById(OrderId orderId) {
+        return orderJpaRepository.findById(orderId.getValue())
+                .map(orderDataAccessMapper::orderEntityToOrder);
     }
 
     @Override

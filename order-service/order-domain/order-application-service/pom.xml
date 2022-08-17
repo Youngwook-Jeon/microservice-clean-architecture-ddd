@@ -18,6 +18,10 @@
     <dependencies>
         <dependency>
             <groupId>com.project.young</groupId>
+            <artifactId>saga</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.project.young</groupId>
             <artifactId>order-domain-core</artifactId>
         </dependency>
         <dependency>
