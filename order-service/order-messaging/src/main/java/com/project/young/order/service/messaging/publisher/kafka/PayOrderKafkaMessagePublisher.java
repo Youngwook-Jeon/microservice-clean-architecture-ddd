@@ -1,6 +1,7 @@
 package com.project.young.order.service.messaging.publisher.kafka;
 
 import com.project.young.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
+import com.project.young.kafka.producer.KafkaMessageHelper;
 import com.project.young.kafka.producer.service.KafkaProducer;
 import com.project.young.order.service.domain.config.OrderServiceConfigData;
 import com.project.young.order.service.domain.event.OrderPaidEvent;
