@@ -5,6 +5,7 @@ import com.project.young.domain.valueobject.OrderStatus;
 import com.project.young.order.service.domain.entity.Order;
 import com.project.young.order.service.domain.exception.OrderNotFoundException;
 import com.project.young.order.service.domain.ports.output.repository.OrderRepository;
+import com.project.young.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -34,18 +35,18 @@ public class OrderSagaHelper {
         orderRepository.save(order);
     }
 
-//    SagaStatus orderStatusToSagaStatus(OrderStatus orderStatus) {
-//        switch (orderStatus) {
-//            case PAID:
-//                return SagaStatus.PROCESSING;
-//            case APPROVED:
-//                return SagaStatus.SUCCEEDED;
-//            case CANCELLING:
-//                return SagaStatus.COMPENSATING;
-//            case CANCELLED:
-//                return SagaStatus.COMPENSATED;
-//            default:
-//                return SagaStatus.STARTED;
-//        }
-//    }
+    SagaStatus orderStatusToSagaStatus(OrderStatus orderStatus) {
+        switch (orderStatus) {
+            case PAID:
+                return SagaStatus.PROCESSING;
+            case APPROVED:
+                return SagaStatus.SUCCEEDED;
+            case CANCELLING:
+                return SagaStatus.COMPENSATING;
+            case CANCELLED:
+                return SagaStatus.COMPENSATED;
+            default:
+                return SagaStatus.STARTED;
+        }
+    }
 }
