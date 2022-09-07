@@ -16,7 +16,7 @@ import java.util.UUID;
 @Component
 public class OrderCreateCommandHandler {
 
-    private static final String ORDER_CREATED = "Order is created";
+    public static final String ORDER_CREATED = "Order is created";
 
     private final OrderCreatedHelper orderCreatedHelper;
     private final OrderDataMapper orderDataMapper;
