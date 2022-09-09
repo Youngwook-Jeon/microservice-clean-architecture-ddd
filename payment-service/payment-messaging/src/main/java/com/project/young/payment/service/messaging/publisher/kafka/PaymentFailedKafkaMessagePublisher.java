@@ -1,20 +1,18 @@
 package com.project.young.payment.service.messaging.publisher.kafka;
 
+import com.project.young.domain.event.publisher.DomainEventPublisher;
 import com.project.young.kafka.order.avro.model.PaymentResponseAvroModel;
 import com.project.young.kafka.producer.KafkaMessageHelper;
 import com.project.young.kafka.producer.service.KafkaProducer;
 import com.project.young.payment.service.domain.config.PaymentServiceConfigData;
-import com.project.young.payment.service.domain.event.PaymentCancelledEvent;
 import com.project.young.payment.service.domain.event.PaymentFailedEvent;
-import com.project.young.payment.service.domain.ports.output.message.publisher.PaymentCancelledMessagePublisher;
-import com.project.young.payment.service.domain.ports.output.message.publisher.PaymentFailedMessagePublisher;
 import com.project.young.payment.service.messaging.mapper.PaymentMessagingDataMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class PaymentFailedKafkaMessagePublisher implements PaymentFailedMessagePublisher {
+public class PaymentFailedKafkaMessagePublisher implements DomainEventPublisher<PaymentFailedEvent> {
 
     private final PaymentMessagingDataMapper paymentMessagingDataMapper;
     private final KafkaProducer<String, PaymentResponseAvroModel> kafkaProducer;

@@ -1,14 +1,8 @@
 package com.project.young.payment.service.domain;
 
 import com.project.young.payment.service.domain.dto.PaymentRequest;
-import com.project.young.payment.service.domain.event.PaymentCancelledEvent;
-import com.project.young.payment.service.domain.event.PaymentCompletedEvent;
 import com.project.young.payment.service.domain.event.PaymentEvent;
-import com.project.young.payment.service.domain.event.PaymentFailedEvent;
 import com.project.young.payment.service.domain.ports.input.message.listener.PaymentRequestMessageListener;
-import com.project.young.payment.service.domain.ports.output.message.publisher.PaymentCancelledMessagePublisher;
-import com.project.young.payment.service.domain.ports.output.message.publisher.PaymentCompletedMessagePublisher;
-import com.project.young.payment.service.domain.ports.output.message.publisher.PaymentFailedMessagePublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -24,21 +18,12 @@ public class PaymentRequestMessageListenerImpl implements PaymentRequestMessageL
 
     @Override
     public void completePayment(PaymentRequest paymentRequest) {
-        PaymentEvent paymentEvent = paymentRequestHelper.persistPayment(paymentRequest);
-        fireEvent(paymentEvent);
+        paymentRequestHelper.persistPayment(paymentRequest);
     }
 
     @Override
     public void cancelPayment(PaymentRequest paymentRequest) {
-        PaymentEvent paymentEvent = paymentRequestHelper.persistCancelPayment(paymentRequest);
-        fireEvent(paymentEvent);
+        paymentRequestHelper.persistCancelPayment(paymentRequest);
     }
 
-    private void fireEvent(PaymentEvent paymentEvent) {
-        log.info("Publishing payment event with payment id: {} and order id: {}",
-                paymentEvent.getPayment().getId().getValue(),
-                paymentEvent.getPayment().getOrderId().getValue());
-
-        paymentEvent.fire();
-    }
 }
