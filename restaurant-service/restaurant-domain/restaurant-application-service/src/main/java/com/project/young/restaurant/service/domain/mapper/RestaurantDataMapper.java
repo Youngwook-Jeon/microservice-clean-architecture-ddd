@@ -8,6 +8,8 @@ import com.project.young.restaurant.service.domain.dto.RestaurantApprovalRequest
 import com.project.young.restaurant.service.domain.entity.OrderDetail;
 import com.project.young.restaurant.service.domain.entity.Product;
 import com.project.young.restaurant.service.domain.entity.Restaurant;
+import com.project.young.restaurant.service.domain.event.OrderApprovalEvent;
+import com.project.young.restaurant.service.domain.outbox.model.OrderEventPayload;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -15,7 +17,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class RestaurantDataMapper {
-
     public Restaurant restaurantApprovalRequestToRestaurant(RestaurantApprovalRequest
                                                                     restaurantApprovalRequest) {
         return Restaurant.builder()
@@ -34,14 +35,14 @@ public class RestaurantDataMapper {
                 .build();
     }
 
-//    public OrderEventPayload
-//    orderApprovalEventToOrderEventPayload(OrderApprovalEvent orderApprovalEvent) {
-//        return OrderEventPayload.builder()
-//                .orderId(orderApprovalEvent.getOrderApproval().getOrderId().getValue().toString())
-//                .restaurantId(orderApprovalEvent.getRestaurantId().getValue().toString())
-//                .orderApprovalStatus(orderApprovalEvent.getOrderApproval().getApprovalStatus().name())
-//                .createdAt(orderApprovalEvent.getCreatedAt())
-//                .failureMessages(orderApprovalEvent.getFailureMessages())
-//                .build();
-//    }
+    public OrderEventPayload
+    orderApprovalEventToOrderEventPayload(OrderApprovalEvent orderApprovalEvent) {
+        return OrderEventPayload.builder()
+                .orderId(orderApprovalEvent.getOrderApproval().getOrderId().getValue().toString())
+                .restaurantId(orderApprovalEvent.getRestaurantId().getValue().toString())
+                .orderApprovalStatus(orderApprovalEvent.getOrderApproval().getApprovalStatus().name())
+                .createdAt(orderApprovalEvent.getCreatedAt())
+                .failureMessages(orderApprovalEvent.getFailureMessages())
+                .build();
+    }
 }
